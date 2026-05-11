@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para mi mamita titito, I LOVE YOU</title>
+
+    <style>
+        :root {
+            --accent-color: #ff4f8b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+            background:
+                radial-gradient(circle at top,
+                    #2b0030 0%,
+                    #120018 40%,
+                    #000000 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* TITULO */
+
+        .Para_Mamá {
+            position: absolute;
+            top: 5%;
+            width: 100%;
+            text-align: center;
+            color: white;
+            font-size: 3rem;
+            font-weight: bold;
+            z-index: 100;
+
+            text-shadow:
+                0 0 10px #ff66b3,
+                0 0 20px #ff3399,
+                0 0 40px #ff3399;
+
+            animation: fadeIn 2s ease;
+        }
+
+        /* FOTO */
+
+        .photo-frame {
+            position: absolute;
+            top: 35%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 290px;
+            height: 390px;
+            border-radius: 30px;
+            overflow: hidden;
+            z-index: 50;
+
+            border: 4px solid rgba(255, 255, 255, 0.15);
+
+            box-shadow:
+                0 0 20px #ff4da6,
+                0 0 50px rgba(255, 0, 128, 0.6),
+                0 0 100px rgba(255, 0, 128, 0.3);
+
+            animation: floatPhoto 4s ease-in-out infinite;
+
+            backdrop-filter: blur(8px);
+        }
+
+        .photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .photo-glow {
+            position: absolute;
+            inset: 0;
+
+            background:
+                linear-gradient(135deg,
+                    rgba(255, 255, 255, 0.2),
+                    transparent,
+                    rgba(255, 105, 180, 0.2));
+
+            z-index: 5;
+            pointer-events: none;
+        }
+
+        /* ESTRELLAS */
+
+        .stars {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle var(--duration) infinite ease-in-out;
+        }
+
+        /* JARDIN */
+
+        .garden {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 55%;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            z-index: 20;
+        }
+
+        .flower-container {
+            display: flex;
+            gap: 70px;
+            align-items: flex-end;
+        }
+
+        .flower {
+            width: 180px;
+            height: 360px;
+
+            animation: sway 4s ease-in-out infinite;
+            transform-origin: bottom center;
+
+            filter:
+                drop-shadow(0 0 10px #ff4da6)
+                drop-shadow(0 0 25px rgba(255, 0, 128, 0.5));
+        }
+
+        /* PASTO */
+
+        .grass {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 180px;
+            z-index: 2;
+        }
+
+        .blade {
+            position: absolute;
+            bottom: -20px;
+            width: 14px;
+            background:
+                linear-gradient(to top,
+                    #0b7a15,
+                    #39ff5a);
+
+            border-radius: 50px 50px 0 0;
+
+            animation: grassMove 4s ease-in-out infinite;
+        }
+
+        /* CORAZONES */
+
+        .heart {
+            position: absolute;
+            color: var(--accent-color);
+            text-shadow: 0 0 15px hotpink;
+            animation: float 5s linear forwards;
+            pointer-events: none;
+            z-index: 999;
+        }
+
+        /* PARTICULAS */
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #ff99cc;
+            border-radius: 50%;
+
+            box-shadow: 0 0 12px #ff66aa;
+
+            animation: particleFloat 6s linear infinite;
+        }
+
+        /* ANIMACIONES */
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes sway {
+
+            0%,
+            100% {
+                transform: rotate(-4deg);
+            }
+
+            50% {
+                transform: rotate(4deg);
+            }
+        }
+
+        @keyframes twinkle {
+
+            0%,
+            100% {
+                opacity: .2;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(1.7);
+            }
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(-110vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        @keyframes particleFloat {
+            0% {
+                transform: translateY(0);
+                opacity: 0;
+            }
+
+            20% {
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(-120vh);
+                opacity: 0;
+            }
+        }
+
+        @keyframes grassMove {
+
+            0%,
+            100% {
+                transform: rotate(-4deg);
+            }
+
+            50% {
+                transform: rotate(4deg);
+            }
+        }
+
+        @keyframes floatPhoto {
+
+            0%,
+            100% {
+                transform: translate(-50%, -50%) translateY(0px);
+            }
+
+            50% {
+                transform: translate(-50%, -50%) translateY(-10px);
+            }
+        }
+
+        /* RESPONSIVE */
+
+        @media(max-width:768px) {
+
+            .Para_Mamá {
+                font-size: 2rem;
+                padding: 0 20px;
+            }
+
+            .photo-frame {
+                width: 220px;
+                height: 300px;
+                top: 38%;
+            }
+
+            .flower {
+                width: 110px;
+                height: 220px;
+            }
+
+            .flower-container {
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- MUSICA -->
+    <audio autoplay loop id="bg-music">
+        <source src="mamita-.mp3" type="audio/mp3">
+    </audio>
+
+    <!-- ESTRELLAS -->
+    <div class="stars" id="star-field"></div>
+
+    <!-- PARTICULAS -->
+    <div id="particles"></div>
+
+    <div class="container">
+
+        <!-- TITULO -->
+        <h1 class="Para_Mamá">
+            Para mi mamita titito. I Love You
+        </h1>
+
+        <!-- FOTO -->
+        <div class="photo-frame">
+
+            <div class="photo-glow"></div>
+
+            <!-- TU FOTO -->
+            <img src="mamita titito 1.jpeg" alt="Mi mamá">
+
+        </div>
+
+        <!-- FLORES -->
+        <div class="garden">
+            <div class="flower-container" id="flowers"></div>
+        </div>
+
+        <!-- PASTO -->
+        <div class="grass" id="grass"></div>
+
+    </div>
+
+    <script>
+
+        /* ACTIVAR MUSICA */
+
+        document.addEventListener("click", () => {
+
+            const music = document.getElementById("bg-music");
+
+            music.play();
+
+        }, { once: true });
+
+        /* FLOR SVG */
+
+        const flowerSVG = `
+        <svg viewBox="0 0 200 400">
+
+            <path d="M100 380 Q105 250 100 120"
+                stroke="#39ff5a"
+                stroke-width="8"
+                fill="none"
+                stroke-linecap="round"
+                filter="url(#greenGlow)" />
+
+            <ellipse cx="75" cy="250" rx="30" ry="15"
+                fill="#1eff66"
+                transform="rotate(-30 75 250)" />
+
+            <ellipse cx="125" cy="220" rx="30" ry="15"
+                fill="#1eff66"
+                transform="rotate(30 125 220)" />
+
+            <ellipse cx="80" cy="180" rx="25" ry="12"
+                fill="#1eff66"
+                transform="rotate(-20 80 180)" />
+
+            <ellipse cx="100" cy="90" rx="26" ry="55"
+                fill="#ff4da6" />
+
+            <ellipse cx="70" cy="115" rx="24" ry="48"
+                fill="#ff66b3"
+                transform="rotate(-40 70 115)" />
+
+            <ellipse cx="130" cy="115" rx="24" ry="48"
+                fill="#ff66b3"
+                transform="rotate(40 130 115)" />
+
+            <ellipse cx="85" cy="70" rx="20" ry="42"
+                fill="#ff80bf"
+                transform="rotate(-15 85 70)" />
+
+            <ellipse cx="115" cy="70" rx="20" ry="42"
+                fill="#ff80bf"
+                transform="rotate(15 115 70)" />
+
+            <circle cx="100" cy="110" r="15"
+                fill="#fff5cc"
+                filter="url(#pinkGlow)" />
+
+            <defs>
+
+                <filter id="pinkGlow">
+                    <feGaussianBlur stdDeviation="5" result="blur"/>
+                    <feMerge>
+                        <feMergeNode in="blur"/>
+                        <feMergeNode in="SourceGraphic"/>
+                    </feMerge>
+                </filter>
+
+                <filter id="greenGlow">
+                    <feGaussianBlur stdDeviation="3" result="blur"/>
+                    <feMerge>
+                        <feMergeNode in="blur"/>
+                        <feMergeNode in="SourceGraphic"/>
+                    </feMerge>
+                </filter>
+
+            </defs>
+
+        </svg>
+        `;
+
+        function init() {
+
+            const field = document.getElementById('star-field');
+            const flowers = document.getElementById('flowers');
+            const grass = document.getElementById('grass');
+            const particles = document.getElementById('particles');
+
+            /* ESTRELLAS */
+
+            for (let i = 0; i < 120; i++) {
+
+                const star = document.createElement('div');
+
+                star.className = 'star';
+
+                const size = Math.random() * 3 + 'px';
+
+                star.style.width = size;
+                star.style.height = size;
+
+                star.style.top = Math.random() * 100 + '%';
+                star.style.left = Math.random() * 100 + '%';
+
+                star.style.setProperty(
+                    '--duration',
+                    (Math.random() * 3 + 2) + 's'
+                );
+
+                field.appendChild(star);
+            }
+
+            /* FLORES */
+
+            for (let i = 0; i < 3; i++) {
+
+                const flower = document.createElement('div');
+
+                flower.className = 'flower';
+
+                flower.innerHTML = flowerSVG;
+
+                flower.style.animationDelay = (i * 0.8) + 's';
+
+                flowers.appendChild(flower);
+            }
+
+            /* PASTO */
+
+            for (let i = 0; i < 45; i++) {
+
+                const blade = document.createElement('div');
+
+                blade.className = 'blade';
+
+                blade.style.left = Math.random() * 100 + '%';
+
+                blade.style.height =
+                    (80 + Math.random() * 120) + 'px';
+
+                blade.style.transform =
+                    `rotate(${Math.random() * 30 - 15}deg)`;
+
+                blade.style.animationDelay =
+                    (Math.random() * 3) + 's';
+
+                grass.appendChild(blade);
+            }
+
+            /* PARTICULAS */
+
+            for (let i = 0; i < 40; i++) {
+
+                const p = document.createElement('div');
+
+                p.className = 'particle';
+
+                p.style.left = Math.random() * 100 + 'vw';
+
+                p.style.bottom = '0';
+
+                p.style.animationDuration =
+                    (Math.random() * 5 + 4) + 's';
+
+                p.style.animationDelay =
+                    (Math.random() * 5) + 's';
+
+                particles.appendChild(p);
+            }
+        }
+
+        /* CORAZONES */
+
+        function createHearts() {
+
+            const heart = document.createElement('div');
+
+            heart.className = 'heart';
+
+            heart.innerHTML = '❤';
+
+            heart.style.left = Math.random() * 100 + 'vw';
+
+            heart.style.bottom = '-20px';
+
+            heart.style.fontSize =
+                (Math.random() * 20 + 15) + 'px';
+
+            heart.style.animationDuration =
+                (Math.random() * 3 + 4) + 's';
+
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 6000);
+        }
+
+        init();
+
+        setInterval(createHearts, 400);
+
+    </script>
+
+</body>
+
+</html>
